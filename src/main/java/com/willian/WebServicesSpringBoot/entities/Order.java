@@ -36,7 +36,7 @@ public class Order implements Serializable {
 	@JoinColumn(name = "client_id")
 	private User client;
 	
-	@Column(name = "orderStatus")
+	@Column(name = "order_status")
 	private Integer orderStatus;
 
 	public Order() {
