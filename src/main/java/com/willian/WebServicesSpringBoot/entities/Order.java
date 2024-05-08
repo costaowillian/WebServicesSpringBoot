@@ -36,7 +36,7 @@ public class Order implements Serializable {
 	@JoinColumn(name = "client_id")
 	private User client;
 	
-	
+	@Column(name = "orderStatus")
 	private Integer orderStatus;
 
 	public Order() {
@@ -79,7 +79,7 @@ public class Order implements Serializable {
 
 	public void setOrderStatus(OrderStatus orderStatus) {
 		if(orderStatus != null) {
-		this.orderStatus = orderStatus.getCode();
+			this.orderStatus = orderStatus.getCode();
 		}
 	}
 
@@ -98,10 +98,5 @@ public class Order implements Serializable {
 			return false;
 		Order other = (Order) obj;
 		return Objects.equals(id, other.id) && Objects.equals(moment, other.moment);
-	}
-
-	
-	
-	
-	
+	}	
 }
