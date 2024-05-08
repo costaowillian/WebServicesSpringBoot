@@ -2,12 +2,13 @@ package com.willian.WebServicesSpringBoot.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.willian.WebServicesSpringBoot.entities.enums.OrderStatus;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,6 +39,9 @@ public class Order implements Serializable {
 	
 	@Column(name = "order_status")
 	private Integer orderStatus;
+	
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderItem> items = new HashSet<>();
 
 	public Order() {
 	}
@@ -81,6 +85,10 @@ public class Order implements Serializable {
 		if(orderStatus != null) {
 			this.orderStatus = orderStatus.getCode();
 		}
+	}
+	
+	public Set<OrderItem> getItem() {
+		return this.items;
 	}
 
 	@Override
