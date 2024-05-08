@@ -34,12 +34,12 @@ public class Product implements Serializable {
 	@Column(name = "price", nullable = false)
 	private double price;
 	
-	@Column(name = "img_url", nullable = false, length = 500)
+	@Column(name = "img_url", nullable = true, length = 500)
 	private String imgUrl;
 	
 	@ManyToMany
 	@JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-	private Set<Category> categroies = new HashSet<>();
+	private Set<Category> categories = new HashSet<>();
 
 	public Product() {
 	}
@@ -93,7 +93,7 @@ public class Product implements Serializable {
 	}
 
 	public Set<Category> getCategroies() {
-		return categroies;
+		return categories;
 	}
 
 	@Override
